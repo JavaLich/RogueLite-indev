@@ -39,7 +39,6 @@ int main() {
 	window.setVerticalSyncEnabled(true);
 	sf::View view = window.getView();
 	cout << "before init" << endl;
-	cout << "Git is working, ok second try" << endl;
 	init();
 //	cout << "before world create" << endl;
 	World world;
