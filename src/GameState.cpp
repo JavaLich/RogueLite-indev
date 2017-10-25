@@ -11,9 +11,11 @@ GameState::GameState() {
 	status = MENU;
 }
 
-static void GameState::update(){
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-
+static void GameState::update() {
+	if (status != PAUSED) {
+		status = PAUSED;
+	} else {
+		status = PLAYING;
 	}
 }
 

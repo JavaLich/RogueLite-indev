@@ -11,6 +11,7 @@
 #include "Chunk.h"
 #include "World.h"
 #include "Player.h"
+#include "GameState.h"
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
@@ -42,6 +43,8 @@ int main() {
 	init();
 //	cout << "before world create" << endl;
 	World world;
+	GameState state;
+	state.status=GameState::PLAYING;
 //	cout << "after world create" << endl;
 	Player player(Vector2f(world.rooms.at(0).centerx*48, world.rooms.at(0).centery*48), &world);
 //	cout << "Player created. "<<endl;
@@ -52,10 +55,19 @@ int main() {
 				cout << "window" << endl;
 				shutDown(window);
 			}
+			if (event.type == sf::Event::KeyPressed)
+			{
+			    if (event.key.code == sf::Keyboard::Space)
+			    {
+			        state.update();
+			    }
+			}
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))shutDown(window);
 
-		player.update();
+
+		if(state.status==GameState::PLAYING)player.update();
+//		cout << state.status << endl;
 //		cout << "Player updated. "<<endl;
 		view.setCenter(player.getPosition().x + 48,
 				player.getPosition().y + 48);
