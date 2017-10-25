@@ -1,0 +1,6 @@
+carve room
+check for space for corridor
+if not,
+carve corridor
+check space for room
+carve another room
